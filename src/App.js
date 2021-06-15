@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import InputForm from "./components/InputForm";
+import GenOutput from "./components/GenOutput";
+import "./App.css";
 
 function App() {
+  const [start, setStart] = useState(0);
+  const [end, setEnd] = useState(0);
+
+  const getFieldValues = (num1, num2) => {
+    setStart(num1);
+    setEnd(num2);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1 className="is-size-1">Book Print Calculator</h1>
+      <hr />
+      <InputForm handleFieldValues={getFieldValues} />
+      <hr />
+      {end > 0 && <GenOutput start={start} end={end} />}
     </div>
   );
 }
