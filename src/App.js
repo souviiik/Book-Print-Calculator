@@ -6,10 +6,12 @@ import "./App.css";
 function App() {
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(0);
+  const [pageCount, setPageCount] = useState(16);
 
-  const getFieldValues = (num1, num2) => {
+  const getFieldValues = (num1, num2, pageCount) => {
     setStart(num1);
     setEnd(num2);
+    setPageCount(pageCount);
   };
 
   return (
@@ -18,7 +20,7 @@ function App() {
       <hr />
       <InputForm handleFieldValues={getFieldValues} />
       <hr />
-      {end > 0 && <GenOutput start={start} end={end} />}
+      {end > 0 && <GenOutput start={start} end={end} pageCount={pageCount} />}
     </div>
   );
 }

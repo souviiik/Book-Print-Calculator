@@ -1,11 +1,13 @@
 import React from "react";
 import PrintInstruction from "./PrintInstruction";
 
-export default function GenOutput({ start, end }) {
+export default function GenOutput({ start, end, pageCount }) {
+  console.log(`pageCount`, pageCount);
   const output = [];
   const populateList = () => {
-    for (start; start <= end; start += 16) {
-      var printTill = start + 15 > end ? end : start + 15;
+    for (start; start <= end; start += pageCount) {
+      var printTill =
+        start + (pageCount - 1) > end ? end : start + (pageCount - 1);
 
       output.push({
         task: { start, printTill },

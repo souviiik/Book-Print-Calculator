@@ -9,7 +9,7 @@ export default function PrintInstruction({ o }) {
   };
 
   return (
-    <li onClick={handleClick} className={click && "cutthrough"}>
+    <li onClick={handleClick} className={click ? "cutthrough" : undefined}>
       Print from page {o.task.start} to {o.task.printTill} as booklet.
     </li>
   );
